@@ -46,3 +46,22 @@ Can you create a line graph using the "economics_long" data set that shows chang
 
 ```
 
+If you would like to recreate the Minard graphic of Napoleon's Troops the code is below and the data is in this repo.
+
+```{r}
+
+ggplot(cities, aes(long, lat)) +
+  geom_path(aes(size = survivors, colour =
+direction,
+    group = interaction(group, direction)), data =
+troops) +
+  geom_text(aes(label = city), hjust = 0, vjust = 1,
+size = 4)
+# Polish appearance
+last_plot() +
+  scale_x_continuous("", limits = c(24, 39)) +
+  scale_y_continuous("") +
+  scale_colour_manual(values = c("grey50","red")) +
+  scale_size(to = c(1, 10))
+```
+
