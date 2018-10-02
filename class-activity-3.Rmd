@@ -1,0 +1,48 @@
+---
+title: "class activity 3"
+author: "Charles Lang"
+date: "10/2/2018"
+output: html_document
+---
+
+#Mapping aesthetic to data to = layer
+```{r}
+install.packages("ggplot2")
+library(ggplot2)
+
+ggplot(diamonds, aes(x = price, y = carat)) +
+  geom_point()
+```
+
+#Two layers
+```{r}
+ggplot(mpg, aes(reorder(class, hwy), hwy)) +
+  geom_jitter() +
+  geom_boxplot()
+```
+
+```{r}
+
+#Plot count
+ggplot(diamonds, aes(depth)) +
+  geom_histogram(aes(y = ..count..), binwidth=0.2) +
+  facet_wrap(~ cut) + xlim(50, 70)
+
+#Plot density
+ggplot(diamonds, aes(depth)) +
+  geom_histogram(aes(y = ..density..), binwidth=0.2) +
+  facet_wrap(~ cut) + xlim(50, 70)
+```
+
+```{r}
+ggplot(mpg, aes(displ, hwy, color = class)) +
+  geom_point()
+
+```
+
+Can you create a line graph using the "economics_long" data set that shows change over time in "value01" for different categories of "variable"?
+
+```{r}
+
+```
+
