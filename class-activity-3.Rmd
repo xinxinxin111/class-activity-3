@@ -43,10 +43,17 @@ ggplot(mpg, aes(displ, hwy, color = class)) +
 Can you create a line graph using the "economics_long" data set that shows change over time in "value01" for different categories of "variable"?
 
 ```{r}
-ggplot(economics_long,aes(date,value01,group=variable,color=variable))+geom_line()
-ggplot(ecnomics_long,aes)
+ggplot(economics_long,aes(date,value01,group=variable,color=variable))+geom_line() + facet_grid(~variable)
+
+```
+```{r}
+ggplot(economics_long,aes(date,value01,group=variable,color=variable))+geom_line() + facet_wrap(~variable)
+
 ```
 
+```{r}
+ggplot(economics_long,aes(date,value01,group=variable,color=variable))+geom_line() + facet_grid(variable~.)
+```
 
 If you would like to recreate the Minard graphic of Napoleon's Troops the code is below and the data is in this repo.
 
@@ -54,6 +61,7 @@ If you would like to recreate the Minard graphic of Napoleon's Troops the code i
 #cities<-read.table("cities.txt")
 #troops<-read.table("troops.txt")
 #temps<-read.table("temps.txt")
+#combine dataframe:full join,left join, right join)
 merge(cities,troops,by="long",all=TRUE)
 ggplot(cities, aes(long, lat)) +
   geom_path(aes(size = survivors, colour =
@@ -67,6 +75,6 @@ last_plot() +
   scale_x_continuous("", limits = c(24, 39)) +
   scale_y_continuous("") +
   scale_colour_manual(values = c("grey50","red")) +
-  scale_size(c(1, 10))
+  scale_size(range=c(1, 10))
 ```
 
